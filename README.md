@@ -1,6 +1,8 @@
-Heroku WP
+﻿Heroku WP
 =========
+Hi, notes by Wesley. Thanks to xyu for creating this Heroku and Wordpress setup for me to use.
 
+---------
 This is a template for installing and running [WordPress](http://wordpress.org/) on [Heroku](http://www.heroku.com/) with a focus on speed and security while using the official Heroku stack.
 
 The repository is built on top of the following technologies.
