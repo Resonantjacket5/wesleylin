@@ -3,7 +3,7 @@
 Hi, this is Wesley here: Thanks to xyu for creating this Heroku and Wordpress setup for me to use.
 Below are instructions by xyu from https://github.com/xyu/heroku-wp on how to create a wordpress website.
 Personal Changes: I've inserted a small section for hosting domains from namecheap.com , as well as editing the starting instructions slightly for creating heroku apps and folders with the website name. (Changing the heroku app name afterwards is not pain free) There's also a section at the bottom for adding it to github.com
-Also feel free to visit the website at wesleylin.me
+Also feel free to visit the website
 ---------
 This is a template for installing and running [WordPress](http://wordpress.org/) on [Heroku](http://www.heroku.com/) with a focus on speed and security while using the official Heroku stack.
 
