@@ -1,7 +1,9 @@
-﻿Heroku WP
+﻿Heroku WP (modified instructions)
 =========
-Hi, notes by Wesley. Thanks to xyu for creating this Heroku and Wordpress setup for me to use.
-
+Hi, this is Wesley here: Thanks to xyu for creating this Heroku and Wordpress setup for me to use.
+Below are instructions by xyu from https://github.com/xyu/heroku-wp on how to create a wordpress website.
+Personal Changes: I've inserted a small section for hosting domains from namecheap.com , as well as editing the starting instructions slightly for creating heroku apps and folders with the website name. (Changing the heroku app name afterwards is not pain free) There's also a section at the bottom for adding it to github.com
+Also feel free to visit the website at wesleylin.me
 ---------
 This is a template for installing and running [WordPress](http://wordpress.org/) on [Heroku](http://www.heroku.com/) with a focus on speed and security while using the official Heroku stack.
 
@@ -32,18 +34,27 @@ To customize the site simply place files into `/public` which upon deploy to Her
 Installation
 ------------
 
+Decide on a name: awesomename /*make your own; don't use this one*/
+
 Clone the repository from Github
 
     $ git clone git://github.com/xyu/heroku-wp.git
 
-With the [Heroku gem](http://devcenter.heroku.com/articles/heroku-command), create your app
+With the [Heroku gem](http://devcenter.heroku.com/articles/heroku-command), create your app with your selected name
 
     $ cd heroku-wp
-    $ heroku create
+    $ heroku create awesomename
+    > Creating awesomename... done, stack is cedar
+    > http://awesomename.herokuapp.com/ | git@heroku.com:awesomename.git
+    > Git remote heroku added
+
+If you don't choose a name, heroku will automatically choose one for you: (in this case *strange-turtle...*)
+
+    $ cd heroku-wp
+    $ heroku create  /*nothing here*/
     > Creating strange-turtle-1234... done, stack is cedar
     > http://strange-turtle-1234.herokuapp.com/ | git@heroku.com:strange-turtle-1234.git
     > Git remote heroku added
-
 
 Add a database to your app
 
@@ -233,6 +244,68 @@ Heroku allows you to add custom domains to your site hosted with them.  To add y
 
     $ heroku domains:add www.example.com
     > Added www.example.com as a custom domain name to myapp.heroku.com
+
+Using Namecheap for Custom Domains
+--------------
+
+Namecheap has awesomely allowed students to attain a {insert_awesome_name}.me domain for a year free at https://www.namecheap.com
+Find your new domain name. Then follow namecheap's instructions on signing up. If you don't have a .edu email sorry... but you might have to pay. The instructions are from here: https://www.namecheap.com/support/knowledgebase/article.aspx/385/77/how-do-i-set-up-url-forwarding-for-a-domain 
+Instructions also repeated below for convenience.
+
+First navigate to the domain url settings:
+* Go to your __Dashboard__ (hover above your name in the top left)
+* Click on __Manage__ next to the wanted url, bringing you to the Domain's detail page
+* Scroll down to __Other Domain__
+* Click on __Edit__ next to your domain
+
+Now decide if you want to do a simple redirect (as if you clicked on link from saying: _start.com_ to _website.com_). If so leave most of the options their default with:
+* __Domain to Redirect:__ This Domain
+* __Destination URL__ http://{awesomename}.herokuapp.com
+* __Redirect Type:__ Unmasked
+* __Record Name:__ Leave this alone
+
+If you want to do a masked redirect instead, where your url stays the same as the namecheap one after visiting the website, it's a bit more complicated. For instance, after entering awesomename.me instead of just being redirected to awesomename.herokuapp.com, it'll still say awesomename.me at the top.
+
+* __Domain to Redirect:__ This Domain
+* __Destination URL__ http://{awesomename}.herokuapp.com
+* __Redirect Type:__ Masked
+* __Record Name:__ Leave this alone
+
+Adding respository to github.com
+--------------------------------
+
+* Login to your github account
+* Create a new repository (don't create new readme or gitignore; they already exist).
+* This sample case uses username:__FAKE_USER__ and repository name of __awesomename__
+
+Then use *git remote add* to add the remote url at 
+
+    $ git remote add github https://github.com/FAKE_USER/awesomename.git
+
+Now push your local repository to github. Type in your username and password.
+
+    $ git push github
+    > Username for 'https://github.com': awesomename
+    > Password for 'https://awesomename@github.com':
+    > Counting objects: 654, done.
+    > Delta compression using up to 8 threads.
+    > Compressing objects: 100% (287/287), done.
+    > Writing objects: 100% (654/654), 122.18 KiB | 0 bytes/s, done.
+    > Total 3 (delta 2), reused 0 (delta 0)
+    > To https://github.com/FAKE_USER/awesomename.git
+    >   [new_branch]  production -> production
+
+
+You can see your all of your remote repositories through the below command
+
+    $ git remote -v
+    > github  https://github.com/FAKE_USER/awesomename.git (fetch)
+    > github  https://github.com/FAKE_USER/awesomename.git (push)
+    > heroku  https://git.heroku.com/awesomename.git (fetch)
+    > heroku  https://git.heroku.com/awesomename.git (push)
+    > origin  git://github.com/xyu/heroku-wp.git (fetch)
+    > origin  git://github.com/xyu/heroku-wp.git (push)
+
 
 Running Locally
 ---------------
